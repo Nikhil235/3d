@@ -25,7 +25,7 @@ import { setConsoleFunction } from 'three/src/utils.js';
 setConsoleFunction((type: string, message: string, ...params: unknown[]) => {
   const full = [message, ...params].join(' ');
   if (full.includes('Program Info Log') || full.includes('X4122')) return;
-  (console as Record<string, Function>)[type](message, ...params);
+  (console as any)[type](message, ...params);
 });
 
 // 2) Patch console.warn for the Clock deprecation that comes from
